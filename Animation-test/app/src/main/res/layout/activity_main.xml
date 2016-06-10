@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <RelativeLayout
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+        android:id="@+id/main_layout"
+        android:background="#ffffff">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/bt_frame"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:id="@+id/page_num">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_above="@+id/bt_frame"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:id="@+id/page_num_sub"
+                android:background="#ffffff"
+                android:layout_gravity="center_horizontal">
+
+                <FrameLayout
+                    android:layout_width="6dp"
+                    android:layout_height="6dp"
+                    android:background="@drawable/mini_circle"
+                    android:id="@+id/c1"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginRight="3dp"></FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="6dp"
+                    android:layout_height="6dp"
+                    android:background="@drawable/mini_circle"
+                    android:id="@+id/c2"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginRight="3dp" />
+
+                <FrameLayout
+                    android:layout_width="6dp"
+                    android:layout_height="6dp"
+                    android:background="@drawable/mini_circle"
+                    android:id="@+id/c3"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginRight="3dp" />
+
+                <FrameLayout
+                    android:layout_width="6dp"
+                    android:layout_height="6dp"
+                    android:background="@drawable/mini_circle"
+                    android:id="@+id/c4"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginRight="3dp" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="vertical" android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/bt_frame"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:background="#d0d0d0">
+
+            <Button
+                android:layout_width="140dp"
+                android:layout_height="56dp"
+                android:text="로그인"
+                android:id="@+id/login_bt"
+                android:layout_gravity="center"
+                android:layout_marginRight="90dp"
+                android:textSize="18dp"
+                android:onClick="login_bt_clicked" />
+
+            <Button
+                android:layout_width="140dp"
+                android:layout_height="56dp"
+                android:text="회원가입"
+                android:id="@+id/register_bt"
+                android:layout_gravity="center"
+                android:layout_marginLeft="90dp"
+                android:textSize="18dp"
+                android:nestedScrollingEnabled="true"
+                android:onClick="register_bt_clicked" />
+        </FrameLayout>
+
+    </RelativeLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+</android.support.design.widget.CoordinatorLayout>
