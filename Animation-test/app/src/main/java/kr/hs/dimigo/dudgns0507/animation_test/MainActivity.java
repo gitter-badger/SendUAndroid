@@ -1,36 +1,17 @@
 package kr.hs.dimigo.dudgns0507.animation_test;
 
-import android.app.FragmentManager;
-import android.content.Context;
-import android.graphics.Point;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
-import android.util.Log;
-import android.view.Display;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.WindowManager;
-import android.view.animation.AccelerateInterpolator;
-import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
-import android.view.animation.AnimationSet;
-import android.view.animation.AnimationUtils;
 import android.view.animation.ScaleAnimation;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import org.w3c.dom.Text;
 
 public class MainActivity extends FragmentActivity {
 
@@ -58,9 +39,7 @@ public class MainActivity extends FragmentActivity {
 
         final float[] frame_width = new float[1];
         final float[] frame_height = new float[1];
-
         DisplayMetrics metrics = getResources().getDisplayMetrics();
-
         final int width = metrics.widthPixels;
         final int height = metrics.heightPixels;
 
@@ -79,24 +58,19 @@ public class MainActivity extends FragmentActivity {
             }
         });
 
-        Button login_bt = (Button)findViewById(R.id.login_bt);
-        login_bt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.e("bt", "login_bt_clicked");
-                mViewPager.setCurrentItem(0);
-            }
-        });
+        // 로그인 버튼이 눌러졌을 때 mViewPager.setCurrentItem(0); 를 실행
 
         mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
+                // 페이지가 스크롤 될 때
                 ScaleAnimation scale1 = new ScaleAnimation(preview_pos/2 + 1.0f, positionOffset/2 + 1.0f, preview_pos/2 + 1.0f, positionOffset/2 + 1.0f, 10.0f, 10.0f);
                 ScaleAnimation scale2 = new ScaleAnimation(1.5f - preview_pos/2, 1.5f - positionOffset/2, 1.5f - preview_pos/2, 1.5f - positionOffset/2, 10.0f, 10.0f);
-                scale1.setFillAfter(true);
+                scale1.setFillAfter(true); // 애니메이션 종료 후 원래 상태로 돌아가지 않음
                 scale2.setFillAfter(true);
 
+                // 하단 페이지 표시 점 4개
                 FrameLayout c1 = (FrameLayout)findViewById(R.id.c1);
                 FrameLayout c2 = (FrameLayout)findViewById(R.id.c2);
                 FrameLayout c3 = (FrameLayout)findViewById(R.id.c3);
@@ -109,6 +83,7 @@ public class MainActivity extends FragmentActivity {
                 fromy = (int)(frame_height[0] - frame_height[0] /width*pos);
                 toy = (int)(frame_height[0] - frame_height[0] /width*positionOffsetPixels);
 
+                // login_top_layout 애니메이션 부분
                 if(pos != positionOffsetPixels) {
                     if(position == 0) {
                         final Animation trans = new TranslateAnimation(0, 0, fromy, toy);
